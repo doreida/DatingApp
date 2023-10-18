@@ -29,16 +29,10 @@ public class ErrorsController: BaseApiController
 
     [HttpGet("server-error")]
     public ActionResult<string> GetServerError(){
-        try{
+
            var thing = _context.Users.Find(-1);
            var thingToReturn = thing.ToString();
-           return thingToReturn;
-        }
-        catch(Exception e){
-           return StatusCode(500,"Computer says no!");
-        }
-        
-        
+           return thingToReturn;    
     }
 
 
