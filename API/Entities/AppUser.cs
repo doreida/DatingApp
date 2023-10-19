@@ -1,4 +1,6 @@
-﻿namespace API.Entities
+﻿using API.Extensions;
+
+namespace API.Entities
 {
 
     public class AppUser
@@ -20,6 +22,12 @@
    public string City {get; set;}
    public string Country {get; set;}
    public List<Photo> Photos {get; set;} = new();
+
+
+   public int GetAge()
+   {
+     return DateOfBirth.CalculateAge();
+   }
    
 
 }
