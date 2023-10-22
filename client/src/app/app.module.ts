@@ -18,6 +18,8 @@ import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { ErrorsInterceptor } from './_interceptors/errors.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot(),
     SharedModule
   ],
   providers: [
@@ -47,3 +51,4 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 
