@@ -25,7 +25,7 @@ export class MembersService {
     return this.http.get<Member[]>(this.baseUrl+'users',{observe:'response', params}).pipe(
       map(response => {
         if(response.body){
-          this.paginatedResult.result= response.body;
+          this.paginatedResult.result = response.body;
         }
         const pagination = response.headers.get('Pagination');
         if(pagination){
