@@ -58,4 +58,11 @@ public class MessagesController: BaseApiController
         Response.AddPaginationHeader(new PaginationHeader(messages.CurrentPage, messages.PageSize, messages.TotalCount, messages.TotalPages));
         return messages;
     }
+
+    [HttpGet("thread/{username}")]
+    public async Task<ActionResult<IEnumerable<MessageDTO>>> GetMessageThread(string username)
+    {
+        var currentUsername = User.GetUsername();
+        return Ok(await _messageRepository.GetMessageThread(currentUsername, username));
+    }
 }
