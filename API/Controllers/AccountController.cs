@@ -29,14 +29,8 @@ public class AccountController : BaseApiController
     if (await UserExists(registerDTO.Username)) return BadRequest("This username is taken.Please try another one.");
 
     var user = _mapper.Map<AppUser>(registerDTO);
-
-    using var hmac = new HMACSHA512();
-    
     user.UserName = registerDTO.Username.ToLower();
-    user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
-    user.PasswordSalt = hmac.Key;
-    
-
+  
     _context.Users.Add(user);
     await _context.SaveChangesAsync();
     return new UserDTO{
@@ -54,16 +48,6 @@ public class AccountController : BaseApiController
     .SingleOrDefaultAsync(x => x.UserName == loginDTO.Username);
 
     if (user == null) return Unauthorized("The username is invalid. Please try again!");
-
-    using var hmac = new HMACSHA512(user.PasswordSalt);
-
-    var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
-    
-    for(int i = 0; i<computedHash.Length; i++)
-    {
-      if(computedHash[i]!= user.PasswordHash[i]) return Unauthorized("The password is invalid. Please try again!");
-    }
-
     return new UserDTO{
       Username = user.UserName,
       Token = _tokenService.CreateToken(user),
