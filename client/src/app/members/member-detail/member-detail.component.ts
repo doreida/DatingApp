@@ -28,6 +28,19 @@ export class MemberDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadMember();
+
+    this.route.queryParams.subscribe({
+      next: params => {
+      params['tab'] && this.selectTab(params['tab'])
+      }
+    })
+  }
+
+  selectTab(heading: string)
+  {
+    if(this.memberTabs){
+      this.memberTabs.tabs.find(x => x.heading === heading)!.active = true;
+    }
   }
 
   onTabActivated(data: TabDirective){
