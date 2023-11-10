@@ -21,7 +21,8 @@ public class UsersController : BaseApiController
         _mapper = mapper;
         _photoService = photoService;
     }
-
+    
+   
     [HttpGet]
     public async Task<ActionResult<PagedList<MemberDTO>>> GetUsers([FromQuery]UserParams userParams)
     {
