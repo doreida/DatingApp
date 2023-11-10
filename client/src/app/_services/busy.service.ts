@@ -13,7 +13,8 @@ export class BusyService {
       this.spinnerService.show(undefined,{
         type: 'square-jelly-box',
         bdColor: 'rgba(255,255,255,0)',
-        color: 'white'
+        color: 'white',
+        size: 'medium'
       })
     }
 

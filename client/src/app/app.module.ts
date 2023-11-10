@@ -55,7 +55,11 @@ import { TimeagoModule } from 'ngx-timeago';
     FormsModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }
+      
+    ),
     SharedModule
   ],
   providers: [
