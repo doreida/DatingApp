@@ -29,6 +29,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 import { TimeagoModule } from 'ngx-timeago';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
     TextInputComponent,
     DatePickerComponent,
     AdminPanelComponent,
+    HasRoleDirective,
   ],
   imports: [
     BrowserModule,
