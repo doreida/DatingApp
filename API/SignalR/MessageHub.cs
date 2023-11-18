@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API.SignalR;
+
 [Authorize]
 public class MessageHub : Hub
 {
@@ -42,6 +43,7 @@ public class MessageHub : Hub
     public async Task SendMessage(CreateMessageDTO createMessageDTO)
     {
         var username = Context.User.GetUsername();
+        
 
         if(username == createMessageDTO.RecipientUsername.ToLower())
            throw new HubException("You can not send messages to yourself");
