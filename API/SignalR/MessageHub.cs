@@ -50,6 +50,7 @@ public class MessageHub : Hub
     public async Task SendMessage(CreateMessageDTO createMessageDTO)
     {
         var username = Context.User.GetUsername();
+        
 
         if(username == createMessageDTO.RecipientUsername.ToLower())
            throw new HubException("You can not send messages to yourself");

@@ -35,7 +35,12 @@ export class MemberDetailComponent implements OnInit, OnDestroy{
         next: user =>{
           if(user) this.user = user;
         }
+<<<<<<< HEAD
       })
+=======
+        });
+  
+>>>>>>> 16398a758f3c0538389152be1011f496aae82377
     }
 
   ngOnInit(): void {
@@ -53,7 +58,11 @@ export class MemberDetailComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
+<<<<<<< HEAD
     this.messageService.stopHubConnection();
+=======
+      this.messageService.stopHubConnection();
+>>>>>>> 16398a758f3c0538389152be1011f496aae82377
   }
 
   selectTab(heading: string)
@@ -84,6 +93,15 @@ export class MemberDetailComponent implements OnInit, OnDestroy{
     if(!this.member) return;
     for(const photo of this.member?.photos){
       this.images.push(new ImageItem({src:photo.url, thumb: photo.url}))
+    }
+  }
+
+  onTabActivated(data: TabDirective){
+    this.activeTab = data;
+    if(this.activeTab.heading === 'Messages' && this.user){
+      this.messageService.createHubConnection(this.user, this.member.userName);
+    } else {
+      this.messageService.stopHubConnection();
     }
   }
 
